@@ -1,0 +1,14 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "indentation": 4,
+    "block-opening-brace-newline-before": "always",
+    "block-opening-brace-space-before": "never-single-line",
+    "block-closing-brace-newline-before": "always"
+  },
+  "ignoreFiles": [
+    "venv/",
+    "node_modules/",
+    "static/css/compiled/"
+  ]
+}
