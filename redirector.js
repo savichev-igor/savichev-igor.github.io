@@ -12,18 +12,25 @@
 // the single page app to route accordingly.
 (function(location) {
     if (location.search) {
-        var q = {};
+        var query = {};
 
-        location.search.slice(1).split('&').forEach(function(v) {
-            var a = v.split('=');
-            q[a[0]] = a.slice(1).join('=').replace(/~and~/g, '&');
-        });
+        location.search
+            .slice(1)
+            .split('&')
+            .forEach(function(value) {
+                var keyValue = value.split('=');
 
-        if (q.p !== undefined) {
-            window.history.replaceState(null, null,
-                location.pathname.slice(0, -1) + (q.p || '') +
-                (q.q ? ('?' + q.q) : '') +
-                location.hash
+                query[keyValue[0]] = keyValue
+                    .slice(1)
+                    .join('=')
+                    .replace(/~and~/g, '&');
+            });
+
+        if (query.p !== undefined) {
+            window.history.replaceState(
+                null,
+                null,
+                location.pathname.slice(0, -1) + (query.p || '') + (query.q ? ('?' + query.q) : '') + location.hash
             );
         }
     }
