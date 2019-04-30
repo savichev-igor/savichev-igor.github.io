@@ -1,0 +1,23 @@
+.contact
+{
+    a
+    {
+        text-decoration: none;
+    }
+
+    &__title
+    {
+        margin-top: 0;
+    }
+
+    & img
+    {
+        width: 150px;
+        transition: all 0.7s ease;
+
+        &:hover
+        {
+            transform: rotate(15deg);
+        }
+    }
+}

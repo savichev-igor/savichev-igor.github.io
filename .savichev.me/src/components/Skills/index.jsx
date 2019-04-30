@@ -1,52 +1,38 @@
-import React from 'react'
+import React from 'react';
 
-import './index.styl'
+import Progress from '../Progress/index.jsx';
 
+const Skills = () => {
+    return (
+        <article className="row">
+            <div className="col-md-12">
+                <Progress
+                    mod="danger"
+                    value="80"
+                    srOnly="80% Complete"
+                    type="JS / NodeJS"
+                />
+                <Progress
+                    mod="warning"
+                    value="75"
+                    srOnly="75% Complete"
+                    type="HTML / CSS"
+                />
+                <Progress
+                    mod="success"
+                    value="70"
+                    srOnly="70% Complete"
+                    type="python2 / python3"
+                />
+                <Progress
+                    mod="info"
+                    value="50"
+                    srOnly="50% Complete"
+                    type="С / C++"
+                />
+            </div>
+        </article>
+    );
+};
 
-class Skills extends React.Component {
-    render() {
-        return (
-            <article className="row">
-                <div className="col-md-12">
-                    <div className="progress">
-                        <div className="progress-bar progress-bar-danger"
-                             role="progressbar" aria-valuenow="80" aria-valuemin="0"
-                             aria-valuemax="100" style={{"width": "80%"}}>
-                            <span className="sr-only">80% Complete</span>
-                        </div>
-                        <span className="progress-type">JS / NodeJS</span>
-                        <span className="progress-completed">80%</span>
-                    </div>
-                    <div className="progress">
-                        <div className="progress-bar progress-bar-warning"
-                             role="progressbar" aria-valuenow="75" aria-valuemin="0"
-                             aria-valuemax="100" style={{"width": "75%"}}>
-                            <span className="sr-only">75% Complete</span>
-                        </div>
-                        <span className="progress-type">HTML / CSS</span>
-                        <span className="progress-completed">75%</span>
-                    </div>
-                    <div className="progress">
-                        <div className="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70"
-                             aria-valuemin="0" aria-valuemax="100" style={{"width": "70%"}}>
-                            <span className="sr-only">70% Complete</span>
-                        </div>
-                        <span className="progress-type">python2 / python3</span>
-                        <span className="progress-completed">70%</span>
-                    </div>
-                    <div className="progress">
-                        <div className="progress-bar"
-                             role="progressbar" aria-valuenow="50" aria-valuemin="0"
-                             aria-valuemax="100" style={{"width": "50%"}}>
-                            <span className="sr-only">50% Complete</span>
-                        </div>
-                        <span className="progress-type">С / C++</span>
-                        <span className="progress-completed">50%</span>
-                    </div>
-                </div>
-            </article>
-        );
-    }
-}
-
-export default Skills
+export default Skills;

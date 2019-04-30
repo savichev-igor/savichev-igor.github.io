@@ -1,41 +1,43 @@
-import React from 'react'
-import {Router, Route, IndexRoute, browserHistory} from 'react-router'
+import React from 'react';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {YMInitializer} from 'react-yandex-metrika';
 
-import BaseLayout from '../BaseLayout/index.jsx'
+import BaseLayout from '../BaseLayout/index.jsx';
 
-import Main from '../Main/index.jsx'
-import About from '../About/index.jsx'
-import Skills from '../Skills/index.jsx'
-import Blog from '../Blog/index.jsx'
-import Contacts from '../Contacts/index.jsx'
+import Main from '../Main/index.jsx';
+import About from '../About/index.jsx';
+import Skills from '../Skills/index.jsx';
+import Blog from '../Blog/index.jsx';
+import Contacts from '../Contacts/index.jsx';
+import NoMatch from '../NoMatch/index.jsx';
 
-import './index.styl'
+import './index.css';
 
-const YaCounter = (prevState, nextState) => {
-    yaCounter33518188.hit(
-        nextState.location.pathname,
-        {
-            referer: prevState.location.pathname
-        }
+const yaMetrikaOptions = {
+    accurateTrackBounce: true,
+    clickmap: true,
+    trackLinks: true,
+    webvisor: true
+};
+
+const App = () => {
+    return (
+        <React.Fragment>
+            <YMInitializer accounts={[33518188]} options={yaMetrikaOptions}/>
+            <BrowserRouter>
+                <BaseLayout>
+                    <Switch>
+                        <Route exact path="/" component={Main}/>
+                        <Route exact path="/about" component={About}/>
+                        <Route exact path="/skills" component={Skills}/>
+                        <Route exact path="/blog" component={Blog}/>
+                        <Route exact path="/contacts" component={Contacts}/>
+                        <Route component={NoMatch}/>
+                    </Switch>
+                </BaseLayout>
+            </BrowserRouter>
+        </React.Fragment>
     );
 };
 
-
-// TODO: 404 страницу сделать
-class App extends React.Component {
-    render() {
-        return (
-            <Router history={browserHistory}>
-                <Route path="/" component={BaseLayout} onChange={YaCounter}>
-                    <IndexRoute component={Main}/>
-                    <Route path="about" component={About}/>
-                    <Route path="skills" component={Skills}/>
-                    <Route path="blog" component={Blog}/>
-                    <Route path="contacts" component={Contacts}/>
-                </Route>
-            </Router>
-        );
-    }
-}
-
-export default App
+export default App;

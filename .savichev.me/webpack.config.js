@@ -2,104 +2,123 @@ const path = require('path');
 
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-const debug = process.env.NODE_ENV === 'development';
+const isDevelopment = process.env.NODE_ENV === 'development';
 
-
-module.exports = function() {
-    const plugins = [
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: JSON.stringify(process.env.NODE_ENV)
-            }
-        }),
-        new webpack.LoaderOptionsPlugin({
-            options: {
-                postcss: [
-                    require('autoprefixer')()
+// TODO: Донастроить HMR для CSS в development окружении
+const config = {
+    mode: process.env.NODE_ENV,
+    entry: {
+        index: './src/index.jsx',
+        converter: './src/hacks/converter.js',
+        redirector: './src/hacks/redirector.js',
+        vendor: [
+            'react',
+            'react-dom',
+            'react-router-dom',
+            'react-yandex-metrika'
+        ]
+    },
+    output: {
+        path: path.resolve(__dirname, '../'),
+        filename: '[name].js'
+    },
+    devServer: {
+        hot: true,
+        historyApiFallback: true
+    },
+    module: {
+        rules: [
+            {
+                test: /\.html$/,
+                use: 'html-loader'
+            },
+            {
+                test: /\.jsx$/,
+                use: 'babel-loader'
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'postcss-loader'
                 ]
+            },
+            {
+                test: /\.(jpe?g|png|gif|svg)$/,
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: 'images',
+                        publicPath: '/images/'
+                    }
+                }
+            }
+        ]
+    },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    chunks: 'all',
+                    test: path.resolve(__dirname, 'node_modules'),
+                    name: 'vendor',
+                    enforce: true
+                }
+            }
+        },
+        minimize: true,
+        minimizer: [
+            new OptimizeCSSAssetsPlugin(),
+            new UglifyJsPlugin({
+                uglifyOptions: {
+                    output: {
+                        comments: false
+                    }
+                }
+            })
+        ]
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: './src/html/index.html',
+            inject: false,
+            minify: {
+                collapseWhitespace: true,
+                processConditionalComments: true
             }
         }),
-        new ExtractTextPlugin({
-            filename: 'styles.css'
+        new HtmlWebpackPlugin({
+            filename: '404.html',
+            template: './src/html/404.html',
+            inject: false,
+            minify: {
+                collapseWhitespace: true,
+                processConditionalComments: true
+            }
+        }),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+        }),
+        new MiniCssExtractPlugin({
+            filename: 'index.css'
         })
-    ];
-
-    if (!debug) {
-        plugins.push(
-            new HtmlWebpackPlugin({
-                filename: 'index.html',
-                template: './src/index.html',
-                inject: false,
-                minify: {
-                    collapseWhitespace: true,
-                    processConditionalComments: true
-                }
-            }),
-            new webpack.optimize.UglifyJsPlugin({
-                comments: false
-            })
-        )
+    ],
+    performance: {
+        maxAssetSize: 300000
     }
-
-    return {
-        context: __dirname,
-        entry:  './src/app.jsx',
-        output:  {
-            path: path.join(__dirname, '../'),
-            filename: 'app.js'
-        },
-        resolve: {
-            extensions: ['.js', '.jsx', '.styl'],
-            modules: [
-                './node_modules'
-            ]
-        },
-        module: {
-            rules: [
-                {
-                    test: /\.html$/,
-                    use: 'html-loader'
-                },
-                {
-                    test: /\.jsx$/,
-                    use: {
-                        loader: 'babel-loader',
-                        query: {
-                            presets: ['es2015', 'react']
-                        }
-                    }
-                },
-                {
-                    test: /\.styl$/,
-                    use: ExtractTextPlugin.extract({
-                        fallback: 'style-loader',
-                        use: [
-                            {
-                                loader: 'css-loader',
-                                options: {
-                                    minimize: !debug
-                                }
-                            },
-                            'postcss-loader',
-                            'stylus-loader'
-                        ]
-                    })
-                },
-                {
-                    test: /\.(jpe?g|png|gif|svg)$/i,
-                    use: {
-                        loader: 'file-loader',
-                        options: {
-                            name: '[name].[ext]',
-                            publicPath: 'images/',
-                            outputPath: 'images/'
-                        }
-                   }
-                }
-            ]
-        },
-        plugins: plugins
-    };
 };
+
+if (isDevelopment) {
+    config.plugins.push(
+        new webpack.HotModuleReplacementPlugin()
+    )
+}
+
+module.exports = config;

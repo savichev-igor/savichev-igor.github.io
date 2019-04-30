@@ -1,0 +1,14 @@
+body
+{
+    margin: 20px 0;
+    background: url('./images/bg.jpg');
+}
+
+@media (min-width: 768px)
+{
+    .vertical-align
+    {
+        display: flex;
+        align-items: center;
+    }
+}
