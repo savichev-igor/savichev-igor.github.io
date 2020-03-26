@@ -12,6 +12,30 @@
             animation: shake-it 1s linear infinite;
         }
     }
+
+    &__logo
+    {
+        width: 100px;
+        margin: 0 0 0 5px;
+    }
+
+    &__company
+    {
+        display: none;
+    }
+
+    @media (max-width: 768px)
+    {
+        &__work &__logo
+        {
+            display: none;
+        }
+
+        &__work &__company
+        {
+            display: inline-block;
+        }
+    }
 }
 
 @keyframes shake-it
