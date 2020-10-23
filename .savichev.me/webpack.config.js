@@ -18,8 +18,7 @@ const config = {
         vendor: [
             'react',
             'react-dom',
-            'react-router-dom',
-            'react-yandex-metrika'
+            'react-router-dom'
         ]
     },
     output: {

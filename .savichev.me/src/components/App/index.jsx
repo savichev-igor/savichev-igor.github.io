@@ -1,6 +1,5 @@
 import React from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import {YMInitializer} from 'react-yandex-metrika';
 
 import BaseLayout from '../BaseLayout/index.jsx';
 
@@ -13,17 +12,9 @@ import NoMatch from '../NoMatch/index.jsx';
 
 import './index.css';
 
-const yaMetrikaOptions = {
-    accurateTrackBounce: true,
-    clickmap: true,
-    trackLinks: true,
-    webvisor: true
-};
-
 const App = () => {
     return (
         <React.Fragment>
-            <YMInitializer accounts={[33518188]} options={yaMetrikaOptions}/>
             <BrowserRouter>
                 <BaseLayout>
                     <Switch>

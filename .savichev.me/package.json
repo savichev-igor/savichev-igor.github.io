@@ -1,5 +1,5 @@
 {
-    "name": "savi-site",
+    "name": "savichev.me",
     "author": "Savi",
     "version": "1.0.0",
     "description": "Personal site",
@@ -14,17 +14,16 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/savichev-igor/Savi-Site.git"
+        "url": "git+https://github.com/savichev-igor/savichev-igor.github.io.git"
     },
     "bugs": {
-        "url": "https://github.com/savichev-igor/Savi-Site/issues"
+        "url": "https://github.com/savichev-igor/savichev-igor.github.io/issues"
     },
-    "homepage": "https://github.com/savichev-igor/Savi-Site#readme",
+    "homepage": "https://github.com/savichev-igor/savichev-igor.github.io#readme",
     "dependencies": {
         "react": "16.8.6",
         "react-dom": "16.8.6",
-        "react-router-dom": "5.0.0",
-        "react-yandex-metrika": "2.5.1"
+        "react-router-dom": "5.0.0"
     },
     "devDependencies": {
         "@babel/core": "7.4.4",
