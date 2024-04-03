@@ -9,14 +9,14 @@ const Contacts = () => {
                 <Contact
                     href="mailto:igor@savichev.me"
                     title="Написать письмо"
-                    img={require('./images/mail.png')}
+                    img={require('./images/mail.webp')}
                 />
             </div>
             <div className="col-sm-4">
                 <Contact
                     href="https://t.me/savichev"
                     title="Написать в Telegram"
-                    img={require('./images/telegram.png')}
+                    img={require('./images/telegram.webp')}
                 />
             </div>
             <div className="col-sm-4">
@@ -24,7 +24,7 @@ const Contacts = () => {
                     href="http://vk.com/savichev_igor"
                     target="_blank"
                     title="Страничка VK.com"
-                    img={require('./images/vk.png')}
+                    img={require('./images/vk.webp')}
                 />
             </div>
         </article>

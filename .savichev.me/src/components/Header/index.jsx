@@ -19,7 +19,7 @@ const Header = () => {
                         <span className="icon-bar"></span>
                     </button>
                     <Link to="/" className="navbar-brand">
-                        <img src={require('./images/logo.png')} className="navbar-brand__image" alt="logo"/>
+                        <img src={require('./images/logo.webp')} className="navbar-brand__image" alt="logo"/>
                     </Link>
                 </div>
                 <div id="navbar" className="navbar-collapse collapse">

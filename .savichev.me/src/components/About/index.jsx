@@ -37,7 +37,7 @@ const About = () => {
                     В настоящее время являюсь руководителем гильдии фронтенд-разработки в компании&nbsp;
                     <a target="_blank" href="https://habr.com/ru/companies/samolet/profile/" rel="noopener noreferrer">
                         <img
-                            src={require('./images/samolet_logo.png')}
+                            src={require('./images/samolet_logo.webp')}
                             className="about__logo"
                             alt="samolet"
                         />
@@ -47,7 +47,7 @@ const About = () => {
             </div>
             <div className="col-md-4">
                 <img
-                    src={require('./images/mat-meh.jpg')}
+                    src={require('./images/mat-meh.webp')}
                     className="img-thumbnail center-block about__image"
                     alt="Math-Mech"
                 />
