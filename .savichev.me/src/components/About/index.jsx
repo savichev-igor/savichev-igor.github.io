@@ -20,17 +20,28 @@ const About = () => {
                     <a target="_blank" href="https://rtf.urfu.ru/ru/" rel="noopener noreferrer">ИРИТ-РТФ</a>&nbsp;
                     <a target="_blank" href="http://urfu.ru/ru/" rel="noopener noreferrer">УрФУ</a>.
                     <br/>
-                    Обучаюсь по специальности <q>Инженерия программного обеспечения</q>.
+                    Обучался по специальности <q>Инженерия программного обеспечения</q>.
                 </p>
                 <p className="lead about__work">
-                    В настоящее время работаю разработчиком в компании&nbsp;
-                    <a target="_blank" href="https://yandex.ru/" rel="noopener noreferrer">
+                    В прошлом работал разработчиком в компании&nbsp;
+                    <a target="_blank" href="https://habr.com/ru/companies/yandex/profile/" rel="noopener noreferrer">
                         <img
                             src={require('./images/yandex_logo.svg')}
                             className="about__logo"
                             alt="yandex"
                         />
                         <span className="about__company">Яндекс.</span>
+                    </a>
+                </p>
+                <p className="lead about__work">
+                    В настоящее время являюсь руководителем гильдии фронтенд-разработки в компании&nbsp;
+                    <a target="_blank" href="https://habr.com/ru/companies/samolet/profile/" rel="noopener noreferrer">
+                        <img
+                            src={require('./images/samolet_logo.png')}
+                            className="about__logo"
+                            alt="samolet"
+                        />
+                        <span className="about__company">Самолет.</span>
                     </a>
                 </p>
             </div>

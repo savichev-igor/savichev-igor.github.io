@@ -7,7 +7,7 @@ const Main = () => {
         <article className="row vertical-align main">
             <div className="col-md-8">
                 <img
-                    src={require('./images/me.jpg')}
+                    src={require('./images/me_new.png')}
                     className="img-responsive main__me"
                     alt="It's me"
                 />
@@ -15,7 +15,7 @@ const Main = () => {
             <div className="col-md-4">
                 <h2 className="text-center main__title">WHO AM I !?</h2>
                 <p className="lead text-center">
-                    студент, разработчик, яндексоид
+                    Frontend Engineer, Engineering Manager, Frontend Head
                 </p>
                 <img
                     src={require('./images/prog.png')}

@@ -14,9 +14,9 @@ const Contacts = () => {
             </div>
             <div className="col-sm-4">
                 <Contact
-                    href="skype:savichev_igor"
-                    title="Позвонить в Skype"
-                    img={require('./images/skype.png')}
+                    href="https://t.me/savichev"
+                    title="Написать в Telegram"
+                    img={require('./images/telegram.png')}
                 />
             </div>
             <div className="col-sm-4">

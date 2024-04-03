@@ -12,7 +12,7 @@
 
     & img
     {
-        width: 150px;
+        height: 150px;
         transition: all 0.7s ease;
 
         &:hover
