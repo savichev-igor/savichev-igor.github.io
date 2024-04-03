@@ -1,5 +1,8 @@
 .about
 {
+    display: flex;
+    align-items: center;
+
     &__title
     {
         margin-top: 0;
@@ -26,6 +29,8 @@
 
     @media (max-width: 768px)
     {
+        display: block;
+
         &__work &__logo
         {
             display: none;
