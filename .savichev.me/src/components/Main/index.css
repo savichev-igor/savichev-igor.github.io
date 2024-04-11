@@ -4,14 +4,14 @@
     {
         border-top-left-radius: 15px;
         border-bottom-right-radius: 15px;
-        border-top-right-radius: 120px;
-        border-bottom-left-radius: 120px;
+        border-top-right-radius: 75px;
+        border-bottom-left-radius: 75px;
         transition: all 0.7s ease;
 
         &:hover
         {
-            border-top-left-radius: 120px;
-            border-bottom-right-radius: 120px;
+            border-top-left-radius: 75px;
+            border-bottom-right-radius: 75px;
             border-top-right-radius: 15px;
             border-bottom-left-radius: 15px;
         }
